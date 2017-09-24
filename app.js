@@ -9,6 +9,7 @@ var lessMiddleware = require('less-middleware');
 var index = require('./routes/index');
 var andrew = require('./routes/andrew');
 var benedikt = require('./routes/benedikt');
+var mena = require('./routes/mena'); 
 // TODO: import your route
 var users = require('./routes/users');
 
@@ -31,6 +32,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/andrew', andrew);
 app.use('/benedikt', benedikt); 
+app.use('/mena', mena); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
