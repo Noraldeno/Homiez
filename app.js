@@ -10,6 +10,7 @@ var index = require('./routes/index');
 var andrew = require('./routes/andrew');
 var benedikt = require('./routes/benedikt');
 var mena = require('./routes/mena'); 
+var norald = require('./routes/norald');
 // TODO: import your route
 var users = require('./routes/users');
 
@@ -33,6 +34,7 @@ app.use('/users', users);
 app.use('/andrew', andrew);
 app.use('/benedikt', benedikt); 
 app.use('/mena', mena); 
+app.use('/norald', norald');
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
