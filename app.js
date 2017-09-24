@@ -30,9 +30,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/andrew', andrew);
-app.use('/benedikt', benedikt); 
-app.use('/mena', mena); 
+app.use('/fa17g15/andrew', andrew);
+app.use('/fa17g15/benedikt', benedikt); 
+app.use('/fa17g15/mena', mena); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
