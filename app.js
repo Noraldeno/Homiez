@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/fa17g15/home', index);
+app.use('/fa17g15', index);
 app.use('/users', users);
 app.use('/fa17g15/andrew', andrew);
 app.use('/fa17g15/benedikt', benedikt); 
