@@ -1,0 +1,79 @@
+Use Cases: 
+1.Unregistered User:
+-Skill Level:
+Beginner
+- Who they are:
+Prospective home buyer or renter
+First time visiting the site
+Not entirely convinced about
+- User tasks
+		Search and view listings
+		Access to map 	
+		Search within a range from a zip code with a fixed budget, expectations for rooms, space, furnished or unfurnit….
+		
+- User Errors
+Wrong keywords
+Frequency and importance
+When someone is looking for a place to rent / live he/she is going to use the site very often and frequently (probably once a day)
+- Scenario:
+A user visiting the website for the first time. They search for some houses in a certain zip code. They found a house they like to see. They press the contact button, a message to login or register appears.
+
+
+2. Registered Users:
+- Skill Level
+Beginner
+- Who they are
+Prospective home buyer or renter
+First time visiting the site
+Not entirely convinced about
+- User tasks
+		Search and view listings
+		Access to map 	
+		Search within a range from a zip code with a fixed budget, expectations for 
+rooms, space, furnished or unfurnitured….
+		Contact owner or seller
+Coming back after contacting and checking mailbox
+
+- User Errors
+Wrong keywords
+- Frequency and importance
+When someone is looking for a place to rent / live he/she is going to use the site very often and frequently (probably once a day)
+- Scenario: 
+	A user coming back to check on a message that they sent to a real estate agent regarding a property.
+
+3. Real Estate agent
+- Skill Level
+Low to average
+- Who they are
+Professional real estate agent 
+- User tasks
+Lists and edit Homes 
+Massage with potential customers
+- User Errors
+Incorrect listing regarding: 
+Contact info
+Address
+Images
+- Frequency and importance 
+Very often, every time they have a new listing or receive a new message.
+- Scenario:
+	A real estate agent that logs in to post a new listing. They can enter details like address and area and upload photos. They go to their other listings to check how many times they were seen. Go to their messages to check new messages and follow up on old ones.
+
+4. Administrator
+ - Skill Level 
+Skilled and can be trained if needed 
+- Who they are
+Maintenance of website
+- User tasks
+Delete Listings
+Delete Users
+Add Listings
+Add Users
+Update website information
+Resetting passwords 
+- User Errors
+Incorrectly deleting listing
+- Frequency and importance
+Admins make sure that the website is well maintained and up-to-date, it is their daily job
+- Scenario:
+		Admin receives a message that a user needs their password resets so they reset the password for them. They received a message about an inappropriate listing they go their and delete the listing and maybe delete the real estate agent that posted it.
