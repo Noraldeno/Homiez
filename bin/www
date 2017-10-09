@@ -11,14 +11,15 @@ var http = require('http');
 /**
  * Get port from environment and store in Express.
  */
+let portNumAsString = '17015';
 
-var port = normalizePort(process.env.PORT || '17015');
+var port = normalizePort(process.env.PORT || portNumAsString);
 app.set('port', port);
+console.log("Server starting on port " + portNumAsString);
 
 /**
  * Create HTTP server.
  */
-
 var server = http.createServer(app);
 
 /**
