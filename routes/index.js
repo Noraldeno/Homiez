@@ -10,11 +10,11 @@ router.get('/', function(req, res, next) {
 	res.render('index', { 
 		title: 'Team 15' , 
 		andrewLink: currentUrl + '/andrew' , 
-		benediktUrl: currentUrl + '/benedikt', 
-		menaUrl: currentUrl + '/mena', 
-		noraldUrl: currentUrl + '/norald'
+		benediktLink: currentUrl + '/benedikt', 
+		menaLink: currentUrl + '/mena', 
+		noraldLink: currentUrl + '/norald'
 	});
-	
+
 });
 
 /* GET andrew page. */
