@@ -9,10 +9,6 @@ var namespace = require('express-namespace');
 
 
 var index = require('./routes/index');
-var andrew = require('./routes/andrew');
-var benedikt = require('./routes/benedikt');
-var mena = require('./routes/mena'); 
-var norald = require('./routes/norald');
 // TODO: import your route
 var users = require('./routes/users');
 var router = express.Router(); 
@@ -31,35 +27,13 @@ app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-
-// router.use('/', function (req, res, next) {
-// 	console.log('Would you fucking work?!'); 
-// 	router.use(index);
-// 	next(); 
-// });
-
-// router.use(function(req, res, next) {
-// 	console.log("HELLO!?"); 
-
-// });
-
-// app.use('/fa17g15', router);
-
 router.use('/', index)
-router.use('/andrew', andrew);
-router.use('/benedikt', benedikt); 
-router.use('/mena', mena); 
-router.use('/norald', norald);
+router.use('/andrew', index);
+router.use('/benedikt', index); 
+router.use('/mena', index); 
+router.use('/norald', index);
 
 app.use('/fa17g15', router); 
-
-// app.use('/', index);
-// app.use('/users', users);
-// app.use('/andrew', andrew);
-// app.use('/benedikt', benedikt); 
-// app.use('/mena', mena); 
-// app.use('/norald', norald);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
