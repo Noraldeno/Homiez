@@ -7,28 +7,12 @@ var bodyParser = require('body-parser');
 var lessMiddleware = require('less-middleware');
 var namespace = require('express-namespace'); 
 
-// Initializing database connection
-const Sequelize = require('sequelize');
+// import database 
+const database = require('./database/database');
 
-// var credentials = require('../ENV/credentials'); 
+// database.addMedia('Some Picture', 123123);
 
-const username = 'root';
-const password = '';
-
-var sequelize = new Sequelize('fa17g15', username, password, {
-   host: 'localhost',
-   port: 3306,
-   dialect: 'mysql'
-}); 
-
-var test = sequelize.authenticate()
-   .then(function () {
-       console.log("CONNECTED!");
-   })  
-   .catch(function (err) {
-       console.log(err);
-   })  
-   .done();
+ 
 
 // //////
 
