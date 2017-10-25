@@ -8,12 +8,11 @@ var lessMiddleware = require('less-middleware');
 var namespace = require('express-namespace'); 
 
 // import database 
-
 const database = require('./db/database');
+const connection = database.connect(); 
 
-// database.addMedia('Some Picture', 123123);
-
- 
+// database.findMessage(17);
+console.log("____________");
 
 // //////
 
@@ -36,11 +35,6 @@ app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 router.use('/', index)
-router.use('/andrew', index);
-router.use('/benedikt', index); 
-router.use('/mena', index); 
-router.use('/norald', index);
-
 app.use('/fa17g15', router); 
 
 // catch 404 and forward to error handler

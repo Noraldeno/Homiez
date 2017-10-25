@@ -22,7 +22,7 @@ console.log("Server starting on port " + portNumAsString);
 
 /**
 * Sync sequelize
-* listen on port
+* Listen on provided port, or all network interfaces
 */
 
 models.sequelize.sync().then(function() {

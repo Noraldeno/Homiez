@@ -33,14 +33,60 @@ var Users = sequelize.define('users', {
   privilege_level: Sequelize.INTEGER
 });
 
-var Listings = sequelize.define('listings', {});
+var Listings = sequelize.define('listings', {
+  user_id:Sequelize.INTEGER, /* INT */                                 
+  bedrooms:Sequelize.INTEGER, /* INT */
+  bathrooms:Sequelize.INTEGER, /* INT */
+  square_feet:Sequelize.INTEGER, /* INT */
+  building_type:Sequelize.INTEGER, /* STRING */
+  price:Sequelize.FLOAT, /* FLOAT */
+  address:Sequelize.TEXT, /* STRING */
+  kitchen:Sequelize.BOOLEAN, /* BOOLEAN */
+  living_room:Sequelize.BOOLEAN, /* BOOLEAN */
+  floors:Sequelize.INTEGER, /* INT */
+  city:Sequelize.TEXT, /* STRING */
+  zip:Sequelize.TEXT, /* STRING */
+  state:Sequelize.TEXT, /* STRING */
+  description:Sequelize.TEXT, /* STRING */
+  parking:Sequelize.BOOLEAN, /* BOOLEAN */
+  picture:Sequelize.STRING /* STRING */ 
+});
 
-var Messages = sequelize.define('messages', {});
+var Messages = sequelize.define('Messages', {
+  user_id_sent_message:Sequelize.INTEGER, 
+  user_id_recieved_message:Sequelize.INTEGER, 
+  message_body:Sequelize.TEXT
+});
 
 var Media = sequelize.define('media', {
   content: Sequelize.TEXT,
   listing_id: Sequelize.INTEGER
 });
+
+////////////////////////////////////////////
+// 0. CONNECTION FUNCTIONS
+// 1. CREATION FUNCTIONS    
+// 2. FETCHING FUNCTIONS
+// 3. SEARCHING FUNCTIONS  
+///////////////////////////////////////////
+
+
+////////////////////////////////////////////
+// 0. CONNECTION FUNCTIONS 
+///////////////////////////////////////////
+
+database.connect = function () {
+  return new Sequelize(databaseName, username, password, {
+     host: 'localhost',
+     port: 3306,
+     dialect: 'mysql'
+  }); 
+}
+
+
+////////////////////////////////////////////
+// 1. CREATION FUNCTIONS      
+///////////////////////////////////////////
 
 database.addListing = function (
   user_id, /* INT */                                 
@@ -62,22 +108,22 @@ database.addListing = function (
 
   sequelize.sync().then(function () {
       Listings.create({
-        user_id, 
-        bedrooms,
-        bathrooms, 
-        square_feet, 
-        building_type, 
-        price, 
-        address, 
-        kitchen, 
-        living_room, 
-        floors, 
-        city, 
-        zip, 
-        state, 
-        description,
-        parking,
-        picture
+        user_id: user_id, 
+        bedrooms: bedrooms,
+        bathrooms: bathrooms, 
+        square_feet: square_feet, 
+        building_type: building_type, 
+        price: price, 
+        address: address, 
+        kitchen: kitchen, 
+        living_room: living_room, 
+        floors: floors, 
+        city: city, 
+        zip: zip, 
+        state: state, 
+        description: description,
+        parking: parking,
+        picture: picture
       });
   });
 
@@ -94,13 +140,13 @@ database.addUser = function (
 
   sequelize.sync().then(function () {
     Users.create({
-      name: "Andrew", 
-      description: "description", 
-      address: "address",
-      email: "email",
-      phone_number:"phone_number", 
-      picture:"picture", 
-      privilege_level:123
+      name: name, 
+      description: description, 
+      address: address,
+      email: email,
+      phone_number: phone_number, 
+      picture: picture, 
+      privilege_level: privilege_level
     });
   });
 
@@ -119,23 +165,69 @@ database.addMedia = function (
 
 }
 
-database.addMessages = function (
+database.addMessage = function (
   user_id_sent_message, /* INT */
   user_id_recieved_message, /* INT */
   message_body /* STRING */) {
 
-  sequelize.sync().then(function (user_id_sent_message, user_id_recieved_message, message_body) {
+  sequelize.sync().then(function () {
     Messages.create({
-      user_id_sent_message,
-      user_id_recieved_message,
-      message_body 
+      user_id_sent_message:123234,
+      user_id_recieved_message:23432432,
+      message_body:"message_body" 
     });
   });
-
 } 
 
-module.exports = database; 
 
+////////////////////////////////////////////
+// 2. FETCHING FUNCTIONS    
+///////////////////////////////////////////
+
+database.findListing = function (id /*INT*/) {
+  sequelize.sync().then(function() {
+    Listings.findById(id).then(function(listing) {
+      return listing;
+    });
+  });
+}
+
+database.findUser = function (id /*INT*/) {
+  sequelize.sync().then(function() {
+    Users.findById(id).then(function(user) {
+      return user; 
+    });
+  });
+}
+
+database.findMedia = function (id /*INT*/) {
+  sequelize.sync().then(function() {
+    Media.findById(id).then(function(media) {
+      return media; 
+    });
+  });
+}
+
+database.findMessage = function (id /*INT*/) {
+  sequelize.sync().then(function() {
+    Messages.findById(id).then(function(message) {
+      return message;
+    });
+  });
+}
+
+
+////////////////////////////////////////////
+// 2. SEARCHING FUNCTIONS
+///////////////////////////////////////////
+
+database.getResults = function(query /*STRING*/) {
+  console.log("THIS IS YOUR QUERY: " + query); 
+}
+
+
+
+module.exports = database; 
 
 
 /*
