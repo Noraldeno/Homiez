@@ -8,6 +8,7 @@ var lessMiddleware = require('less-middleware');
 var namespace = require('express-namespace'); 
 
 // import database 
+
 const database = require('./db/database');
 
 // database.addMedia('Some Picture', 123123);
