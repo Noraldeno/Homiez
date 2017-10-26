@@ -1,11 +1,53 @@
-<h1>{{title}}</h1>
-<h2>Fall 2017</h2>
-<h2>Section 1</h2>
-<h2>Team 15</h2>  
+<!--Navigation Bar-->
+<nav class="navbar navbar-expand-lg navbar-light bg-faded">
+	<a class="navbar-brand" href="#">{{title}}</a>
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
 
-<p>Welcome to {{title}}'s intro page!</p>
-<a href={{andrewLink}}>Andrew</a> 
-<a href={{benediktLink}}>Benedikt</a>
-<a href={{noraldLink}}>Norald</a>
-<a href={{menaLink}}>Mena</a>
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href={{about}}>About</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Agents</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="#">Link</a>
+			</li>
+		</ul>
+	</div>
+</nav>
 
+<!--Page Header/Jumbotron-->
+<div class="container-fluid">
+	<div id="homeHeader">
+		<h1>{{title}}</h1>
+			<div class="container">
+			<div class="row">
+				<div class="col-sm-6 col-sm-offset-3">
+					<div class="input-group stylish-input-group">
+						<input type="text" class="form-control" placeholder="Search Houses">
+							<span class="input-group-addon">
+								<button type="submit">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</span>
+						</input>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!--Search Results-->
+<div class="container">
+
+
+</div>

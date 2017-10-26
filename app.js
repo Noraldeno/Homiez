@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var lessMiddleware = require('less-middleware');
 var namespace = require('express-namespace'); 
+var hbs = require('express-handlebars')
 
 // import database 
 const database = require('./db/database');
@@ -20,11 +21,12 @@ connection.sync().then(function () {
 // //////
 
 var index = require('./routes/index');
-var users = require('./routes/users');
+var about = require('./routes/about');
 var router = express.Router(); 
 var app = express();
 
 // view engine setup
+app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
@@ -38,6 +40,16 @@ app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 router.use('/', index)
+<<<<<<< 9f6ff8d2da76417babf1791f9e5ded3fe639db82
+=======
+router.use('/about', index);
+/*
+router.use('/andrew', index);
+router.use('/benedikt', index); 
+router.use('/mena', index); 
+router.use('/norald', index);*/
+
+>>>>>>> Created a homepage and moved team members to about page
 app.use('/fa17g15', router); 
 
 // catch 404 and forward to error handler
