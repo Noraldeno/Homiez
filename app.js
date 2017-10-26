@@ -40,8 +40,6 @@ app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 router.use('/', index)
-<<<<<<< 9f6ff8d2da76417babf1791f9e5ded3fe639db82
-=======
 router.use('/about', index);
 /*
 router.use('/andrew', index);
@@ -49,7 +47,6 @@ router.use('/benedikt', index);
 router.use('/mena', index); 
 router.use('/norald', index);*/
 
->>>>>>> Created a homepage and moved team members to about page
 app.use('/fa17g15', router); 
 
 // catch 404 and forward to error handler
