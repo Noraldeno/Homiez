@@ -11,8 +11,11 @@ var namespace = require('express-namespace');
 const database = require('./db/database');
 const connection = database.connect(); 
 
-// database.findMessage(17);
-console.log("____________");
+connection.sync().then(function () {
+
+  database.searchListings('My search query');
+
+});
 
 // //////
 

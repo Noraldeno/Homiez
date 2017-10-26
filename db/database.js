@@ -185,44 +185,95 @@ database.addMessage = function (
 ///////////////////////////////////////////
 
 database.findListing = function (id /*INT*/) {
-  sequelize.sync().then(function() {
-    Listings.findById(id).then(function(listing) {
-      return listing;
-    });
+  Listings.findById(id).then(function(listing) {
+    return listing;
   });
 }
 
 database.findUser = function (id /*INT*/) {
-  sequelize.sync().then(function() {
-    Users.findById(id).then(function(user) {
-      return user; 
-    });
+  Users.findById(id).then(function(user) {
+    return user; 
   });
 }
 
 database.findMedia = function (id /*INT*/) {
-  sequelize.sync().then(function() {
-    Media.findById(id).then(function(media) {
-      return media; 
-    });
+  Media.findById(id).then(function(media) {
+    return media; 
   });
 }
 
 database.findMessage = function (id /*INT*/) {
-  sequelize.sync().then(function() {
-    Messages.findById(id).then(function(message) {
-      return message;
-    });
+  Messages.findById(id).then(function(message) {
+    return message;
   });
 }
 
 
 ////////////////////////////////////////////
-// 2. SEARCHING FUNCTIONS
+// 2. SEARCH FUNCTION
 ///////////////////////////////////////////
 
-database.getResults = function(query /*STRING*/) {
-  console.log("THIS IS YOUR QUERY: " + query); 
+database.searchListings = function(query /*STRING*/) {
+    
+  query = '%' + query + '%';
+
+  const Op = Sequelize.Op; 
+  
+
+  // FIND ALL LISTINGS WITH THIS BUILDING TYPE: APARTMENT/HOME 
+  Listings.findAll({
+    [Op.or]: [
+      {
+        where: {
+          building_type: {
+            [Op.like]: query
+          }
+        }
+      }, 
+      {
+        where: {
+          address: {
+            [Op.like]: query
+          }
+        }
+      },
+      {
+        where: {
+          city: {
+            [Op.like]: query
+          }
+        }
+      },
+      {
+        where: {
+          zip: {
+            [Op.like]: query
+          }
+        }
+      }, 
+      {
+        where: {
+          state: {
+            [Op.like]: query
+          }
+        }
+      }
+    ]
+  }).then(function(listings) {
+
+    console.log("Query: " + query); 
+
+    let resultList = new Array();
+
+    listings.forEach(function (listing) {
+      resultList.push(listing.dataValues);
+    });
+
+    console.log(resultList);
+    return resultList;
+
+  });
+
 }
 
 
