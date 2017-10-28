@@ -32,3 +32,5 @@ npm-debug.log
 # Configuration file
 config/config.json
 creds/credentials.js
+
+less-watch-compiler.config.json

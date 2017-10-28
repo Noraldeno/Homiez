@@ -25,23 +25,13 @@
 
 <!--Page Header/Jumbotron-->
 <div class="container-fluid">
-	<div id="homeHeader">
+	<div class="jumbotron">
 		<h1>{{title}}</h1>
-			<div class="container">
-			<div class="row">
-				<div class="col-sm-6 col-sm-offset-3">
-					<div class="input-group stylish-input-group">
-						<input type="text" class="form-control" placeholder="Search Houses">
-							<span class="input-group-addon">
-								<button type="submit">
-									<span class="glyphicon glyphicon-search"></span>
-								</button>
-							</span>
-						</input>
-					</div>
-				</div>
-			</div>
-		</div>
+			<form class="form-wrapper">
+				<input type="text" id="searchBar" placehoder="Search Listings">
+				<input type="submit" value="go" id="submit">
+					<span class="glyphicon glyphicon-search">
+			</form>
 	</div>
 
 </div>
@@ -49,5 +39,5 @@
 <!--Search Results-->
 <div class="container">
 
-
 </div>
+

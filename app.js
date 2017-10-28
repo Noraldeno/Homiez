@@ -6,7 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var lessMiddleware = require('less-middleware');
 var namespace = require('express-namespace'); 
-var hbs = require('express-handlebars')
+var hbs = require('express-handlebars');
+
 
 // import database 
 const database = require('./db/database');
@@ -22,6 +23,8 @@ connection.sync().then(function () {
 
 var index = require('./routes/index');
 var about = require('./routes/about');
+
+
 var router = express.Router(); 
 var app = express();
 
@@ -38,6 +41,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+
 
 router.use('/', index)
 router.use('/about', index);
