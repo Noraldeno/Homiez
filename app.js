@@ -43,7 +43,7 @@ app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-router.use('/', index)
+router.use('/', index);
 router.use('/about', index);
 /*
 router.use('/andrew', index);

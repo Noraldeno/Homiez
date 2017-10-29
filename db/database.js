@@ -276,8 +276,6 @@ database.searchListings = function(query /*STRING*/) {
 
 }
 
-
-console.log("Hello");
 module.exports = database; 
 
 
