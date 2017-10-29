@@ -14,6 +14,7 @@ var sequelize = new Sequelize(databaseName, username, password, {
    dialect: 'mysql'
 }); 
 
+
 var authenticated = sequelize.authenticate()
 .then(function () {
    console.log("Connection to "+ databaseName +" database successful!");
@@ -215,7 +216,7 @@ database.findMessage = function (id /*INT*/) {
 
 database.searchListings = function(query /*STRING*/) {
     
-  query = '%' + query + '%';
+  query = 'Arizona';
 
   const Op = Sequelize.Op; 
   
@@ -226,35 +227,35 @@ database.searchListings = function(query /*STRING*/) {
       {
         where: {
           building_type: {
-            [Op.like]: query
+            [Op.eq]: query
           }
         }
       }, 
       {
         where: {
           address: {
-            [Op.like]: query
+            [Op.eq]: query
           }
         }
       },
       {
         where: {
           city: {
-            [Op.like]: query
+            [Op.eq]: query
           }
         }
       },
       {
         where: {
           zip: {
-            [Op.like]: query
+            [Op.eq]: query
           }
         }
       }, 
       {
         where: {
           state: {
-            [Op.like]: query
+            [Op.eq]: query
           }
         }
       }

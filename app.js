@@ -15,8 +15,7 @@ let connection = database.connect();
 
 connection.sync().then(function () {
 
-  database.searchListings('My search query');
-
+  database.searchListings('dfsfgsdfgdfs');
 });
 
 // //////
@@ -88,7 +87,7 @@ app.post('/', function(req, res) {
   console.log("_________________________________"); 
   console.log("_________________________________"); 
   console.log("_________________________________"); 
-  
+
 });
 
 
