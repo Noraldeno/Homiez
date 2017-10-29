@@ -11,7 +11,7 @@ var hbs = require('express-handlebars');
 
 // import database 
 const database = require('./db/database');
-const connection = database.connect(); 
+let connection = database.connect(); 
 
 connection.sync().then(function () {
 
@@ -41,6 +41,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, './db/database.js')));
+
 
 
 router.use('/', index);
@@ -71,6 +73,23 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 // ////////////////////////////////////////
+
+app.get('/', function(req,res) {
+  database.searchListings('My Query').then(function(results) {
+    return results; 
+  });
+});
+
+app.post('/', function(req, res) {
+  console.log("_________________________________"); 
+  console.log(req.body); 
+  res.send(200);
+  console.log("_________________________________"); 
+  console.log("_________________________________"); 
+  console.log("_________________________________"); 
+  console.log("_________________________________"); 
+  
+});
 
 
 

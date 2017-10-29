@@ -8,7 +8,7 @@ submit.addEventListener("onclick", function (event){
 	
 });
 
-const database = require('./db/database');
+const database = require('../../db/database');
 const connection = database.connect(); 
 
 connection.sync().then(function () {
