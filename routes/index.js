@@ -81,7 +81,7 @@ router.post('/search', function(req, res, next){
 	    });
 
 	    console.log(resultList);
-	    listItems = resultList
+	    
 
 	    res.render('index', {
 	    	title: title , 
@@ -90,11 +90,10 @@ router.post('/search', function(req, res, next){
 			agents: home + agents,
 			contact: home + contact,
 			search: home + '/search',
-			listItems:listItems
+			listItems:resultList
 		}); 
 
 	});
-
 
 });
 
