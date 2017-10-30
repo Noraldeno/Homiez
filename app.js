@@ -58,6 +58,8 @@ app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, './db/database.js')));
+app.use(express.static(path.join(__dirname, './public/js/search.js')));
+app.use(express.static(path.join(__dirname, './public/css/style.css')));
 
 
 
