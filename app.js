@@ -60,8 +60,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, './db/database.js')));
 // app.use(express.static(path.join(__dirname, './public/js/search.js')));
 // app.use(express.static(path.join(__dirname, './public/css/style.css')));
-app.use('/css', express.static(path.join(__dirname, 'css')));
-app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/style', express.static(path.join(__dirname, '/public/css/style')));
+app.use('/search', express.static(path.join(__dirname, '/public/js/search')));
 
 
 
