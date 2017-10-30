@@ -15,24 +15,24 @@ var connection = database.connect();
 
 database.isAuthenticated(connection); 
 
-// database.addListing(
-//   7, /* INT */                                 
-//   9, /* INT */
-//   5, /* INT */
-//   2000, /* INT */
-//   "House", /* STRING */
-//   750000.5, /* FLOAT */
-//   "1 Hacker Way", /* STRING */
-//   true, /* BOOLEAN */
-//   true, /* BOOLEAN */
-//   4, /* INT */
-//   "Menlo Park", /* STRING */
-//   "94025", /* STRING */
-//   "California", /* STRING */
-//   "description", /* STRING */
-//   true, /* BOOLEAN */
-//   "/images/andrew-background.jpeg" /* STRING */ 
-//   );
+database.addListing(
+  7, /* INT */                                 
+  9, /* INT */
+  5, /* INT */
+  2000, /* INT */
+  "House", /* STRING */
+  750000.5, /* FLOAT */
+  "1 Hacker Way", /* STRING */
+  true, /* BOOLEAN */
+  true, /* BOOLEAN */
+  4, /* INT */
+  "Menlo Park", /* STRING */
+  "94025", /* STRING */
+  "California", /* STRING */
+  "description", /* STRING */
+  true, /* BOOLEAN */
+  "/images/andrew-background.jpeg" /* STRING */ 
+  );
 
 
 

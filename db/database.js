@@ -36,7 +36,7 @@ var sequelize = new Sequelize(databaseName, username, password, {
     privilege_level: Sequelize.INTEGER
   });
 
-  var Listings = sequelize.define('listings', {
+  var Listings = sequelize.define('Listings', {
     user_id:Sequelize.INTEGER, /* INT */                                 
     bedrooms:Sequelize.INTEGER, /* INT */
     bathrooms:Sequelize.INTEGER, /* INT */
@@ -61,7 +61,7 @@ var sequelize = new Sequelize(databaseName, username, password, {
     message_body:Sequelize.TEXT
   });
 
-  var Media = sequelize.define('media', {
+  var Media = sequelize.define('Media', {
     content: Sequelize.TEXT,
     listing_id: Sequelize.INTEGER
   });
