@@ -216,7 +216,7 @@ database.findMessage = function (id /*INT*/) {
 
 database.searchListings = function(query /*STRING*/) {
     
-  query = 'Arizona';
+  query = '6';
 
   const Op = Sequelize.Op; 
   

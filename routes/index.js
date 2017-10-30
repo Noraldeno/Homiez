@@ -15,8 +15,28 @@ router.get('/', function(req, res, next) {
 
 });
 
-router.post('/', function(req, res, next) {
-	let searchResultList = "My response!"
+app.post('/', function(req, res, next){
+    var input = req.body.searchBar;
+    console.log("Searched for " + input);
+    res.render('index', {
+        title: title , 
+        home: current,
+        about: home + about,
+        agents: home + agents,
+        contact: home + contact,
+        listItems: listItems,
+        input: 'yeah'
+    });
+    /*connection.sync().then(function () {
+      database.searchListings('My search query');
+    });*/
+});
+
+router.get('/get-listings', function(req, res, next) {
+	let connection = database.connect(); 
+	
+
+	connection.close(); 
 });
 
 
