@@ -10,6 +10,7 @@ var Sequelize = require('sequelize');
 // var bodyParser = require('body-parser');
 var app = express(); 
 router.use('/about', about);
+router.use(express.static(__dirname + '/public'));
 
 var title = 'HOMIEZ';
 var home = '/fa17g15';
@@ -47,6 +48,8 @@ var current = "#";
 // }; 
 
 var listItems = {}; 
+
+
 
 
 /* GET home page. */
