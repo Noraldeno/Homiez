@@ -13,10 +13,24 @@ var hbs = require('express-handlebars');
 const database = require('./db/database');
 let connection = database.connect(); 
 
-connection.sync().then(function () {
-
-  database.searchListings('dfsfgsdfgdfs');
-});
+// connection.addListing(
+//   user_id, /* INT */                                 
+//   bedrooms, /* INT */
+//   bathrooms, /* INT */
+//   square_feet, /* INT */
+//   building_type, /* STRING */
+//   price, /* FLOAT */
+//   address,  STRING 
+//   kitchen, /* BOOLEAN */
+//   living_room, /* BOOLEAN */
+//   floors, /* INT */
+//   city, /* STRING */
+//   zip, /* STRING */
+//   state, /* STRING */
+//   description, /* STRING */
+//   parking, /* BOOLEAN */
+//   picture /* STRING */
+//   ); 
 
 // //////
 
