@@ -1,23 +1,32 @@
 <!--Navigation Bar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-faded">
-	<a class="navbar-brand" href="#">{{title}}</a>
-	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+	<a class="navbar-brand" href={{home}}>{{title}}</a>
+	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="content" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
 
-	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+	<div class="collapse navbar-collapse" id="content">
 		<ul class="navbar-nav mr-auto">
 			<li class="nav-item">
-				<a class="nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+				<a class="nav-link active" href={{home}}>Home <span class="sr-only">(current)</span></a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href={{about}}>About</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Agents</a>
+				<a class="nav-link" href={{agents}}>Agents</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#">Link</a>
+				<a class="nav-link" href={{contact}}>Contact</a>
+			</li>
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li class="nav-item">
+				<a class="nav-link" href={{signUp}}>Sign Up</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href={{login}}>Login</a>
 			</li>
 		</ul>
 	</div>
@@ -27,16 +36,25 @@
 <div class="container-fluid">
 	<div class="jumbotron">
 		<h1>{{title}}</h1>
-			<input type="text" id="searchBar" placehoder="Search Listings">
-			<input type="submit" value="Go" id="submitThis">
-			
+			<form class="idSearch">
+				<input type="text" id="searchBar" placehoder="Search Listings">
+				<input type="submit" value="Go" id="submitThis">	
+			</form>
 	</div>
-
 </div>
 
 <!--Search Results-->
-<div class="container">
-
+<div class="container-fluid">
+	<div class="row">
+		{{#each listItems}}
+			<div class="col-sm-4 house">
+				<p>{{this.address}}</p>
+				<p>{{this.zip}}</p>
+				<p>{{this.city}}</p>
+				
+			</div>
+		{{/each}}
+	</div>
 </div>
 
 <script src="js/search.js"></script>

@@ -4,5 +4,3 @@ document.getElementById("submitThis").onclick = function(){
 	console.log(input.value);
 };
 
-
-

@@ -9,7 +9,7 @@ var namespace = require('express-namespace');
 var hbs = require('express-handlebars');
 
 
-// import database 
+/*/ import database 
 const database = require('./db/database');
 const connection = database.connect(); 
 
@@ -19,10 +19,9 @@ connection.sync().then(function () {
 
 });
 
-// //////
+// /////*/
 
-var index = require('./routes/index');
-var about = require('./routes/about');
+var routes = require('./routes');
 
 
 var router = express.Router(); 
@@ -42,16 +41,14 @@ app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
+/*router.use('/', routes);
+router.use('/about', about);
+router.use('/', about);
+router.use('/about/benedikt', about); 
+router.use('/about/mena', about); 
+router.use('/about/norald', about);*/
 
-router.use('/', index);
-router.use('/about', index);
-/*
-router.use('/andrew', index);
-router.use('/benedikt', index); 
-router.use('/mena', index); 
-router.use('/norald', index);*/
-
-app.use('/fa17g15', router); 
+app.use('/fa17g15', routes); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
