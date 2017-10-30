@@ -36,8 +36,8 @@
 <div class="container-fluid">
 	<div class="jumbotron">
 		<h1>{{title}}</h1>
-			<form class="idSearch">
-				<input type="text" id="searchBar" placehoder="Search Listings">
+			<form action={{search}} method="GET">
+				<input type="text" name="searchBar" placehoder="Search Listings">
 				<input type="submit" value="Go" id="submitThis">	
 			</form>
 	</div>
@@ -51,10 +51,12 @@
 				<p>{{this.address}}</p>
 				<p>{{this.zip}}</p>
 				<p>{{this.city}}</p>
+				{{input}}
 			</div>
 		{{/each}}
 	</div>
 </div>
+
 
 <script src="/js/search.js"></script>
 
