@@ -9,14 +9,14 @@ var namespace = require('express-namespace');
 var hbs = require('express-handlebars');
 
 
-// import database 
-// const database = require('./db/database');
-// let connection = database.connect(); 
+// import database;
+const database = require('./db/database');
+let connection = database.connect(); 
 
-// connection.sync().then(function () {
+connection.sync().then(function () {
 
-//   database.searchListings('dfsfgsdfgdfs');
-// });
+  database.searchListings('dfsfgsdfgdfs');
+});
 
 // //////
 
@@ -35,7 +35,7 @@ app.set('view engine', 'hbs');
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));

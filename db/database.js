@@ -8,6 +8,7 @@ const username = credentials.username();
 const password = credentials.password(); 
 const databaseName = credentials.database(); 
 
+
 var sequelize = new Sequelize(databaseName, username, password, {
    host: 'localhost',
    port: 3306,
@@ -15,54 +16,58 @@ var sequelize = new Sequelize(databaseName, username, password, {
 }); 
 
 
-var authenticated = sequelize.authenticate()
-.then(function () {
-   console.log("Connection to "+ databaseName +" database successful!");
-})  
-.catch(function (err) {
-   console.log(err);
-})  
-.done();
 
-var Users = sequelize.define('users', {
-  name: Sequelize.TEXT, 
-  description: Sequelize.TEXT, 
-  address: Sequelize.TEXT, 
-  email: Sequelize.TEXT,
-  phone_number: Sequelize.TEXT,
-  picture: Sequelize.TEXT,
-  privilege_level: Sequelize.INTEGER
-});
+  var authenticated = sequelize.authenticate()
+  .then(function () {
+     console.log("Connection to "+ databaseName +" database successful!");
+  })  
+  .catch(function (err) {
+     console.log(err);
+  })  
+  .done();
 
-var Listings = sequelize.define('listings', {
-  user_id:Sequelize.INTEGER, /* INT */                                 
-  bedrooms:Sequelize.INTEGER, /* INT */
-  bathrooms:Sequelize.INTEGER, /* INT */
-  square_feet:Sequelize.INTEGER, /* INT */
-  building_type:Sequelize.INTEGER, /* STRING */
-  price:Sequelize.FLOAT, /* FLOAT */
-  address:Sequelize.TEXT, /* STRING */
-  kitchen:Sequelize.BOOLEAN, /* BOOLEAN */
-  living_room:Sequelize.BOOLEAN, /* BOOLEAN */
-  floors:Sequelize.INTEGER, /* INT */
-  city:Sequelize.TEXT, /* STRING */
-  zip:Sequelize.TEXT, /* STRING */
-  state:Sequelize.TEXT, /* STRING */
-  description:Sequelize.TEXT, /* STRING */
-  parking:Sequelize.BOOLEAN, /* BOOLEAN */
-  picture:Sequelize.STRING /* STRING */ 
-});
+  var Users = sequelize.define('users', {
+    name: Sequelize.TEXT, 
+    description: Sequelize.TEXT, 
+    address: Sequelize.TEXT, 
+    email: Sequelize.TEXT,
+    phone_number: Sequelize.TEXT,
+    picture: Sequelize.TEXT,
+    privilege_level: Sequelize.INTEGER
+  });
 
-var Messages = sequelize.define('Messages', {
-  user_id_sent_message:Sequelize.INTEGER, 
-  user_id_recieved_message:Sequelize.INTEGER, 
-  message_body:Sequelize.TEXT
-});
+  var Listings = sequelize.define('listings', {
+    user_id:Sequelize.INTEGER, /* INT */                                 
+    bedrooms:Sequelize.INTEGER, /* INT */
+    bathrooms:Sequelize.INTEGER, /* INT */
+    square_feet:Sequelize.INTEGER, /* INT */
+    building_type:Sequelize.INTEGER, /* STRING */
+    price:Sequelize.FLOAT, /* FLOAT */
+    address:Sequelize.TEXT, /* STRING */
+    kitchen:Sequelize.BOOLEAN, /* BOOLEAN */
+    living_room:Sequelize.BOOLEAN, /* BOOLEAN */
+    floors:Sequelize.INTEGER, /* INT */
+    city:Sequelize.TEXT, /* STRING */
+    zip:Sequelize.TEXT, /* STRING */
+    state:Sequelize.TEXT, /* STRING */
+    description:Sequelize.TEXT, /* STRING */
+    parking:Sequelize.BOOLEAN, /* BOOLEAN */
+    picture:Sequelize.STRING /* STRING */ 
+  });
 
-var Media = sequelize.define('media', {
-  content: Sequelize.TEXT,
-  listing_id: Sequelize.INTEGER
-});
+  var Messages = sequelize.define('Messages', {
+    user_id_sent_message:Sequelize.INTEGER, 
+    user_id_recieved_message:Sequelize.INTEGER, 
+    message_body:Sequelize.TEXT
+  });
+
+  var Media = sequelize.define('media', {
+    content: Sequelize.TEXT,
+    listing_id: Sequelize.INTEGER
+  });
+
+
+
 
 ////////////////////////////////////////////
 // 0. CONNECTION FUNCTIONS
@@ -82,6 +87,19 @@ database.connect = function () {
      port: 3306,
      dialect: 'mysql'
   }); 
+}
+
+database.isAuthenticated = function (connection) {
+
+  var authenticated = connection.authenticate()
+  .then(function () {
+     console.log("Connection to "+ databaseName +" database successful!");
+  })  
+  .catch(function (err) {
+     console.log(err);
+  })  
+  .done();
+
 }
 
 
@@ -214,66 +232,57 @@ database.findMessage = function (id /*INT*/) {
 // 2. SEARCH FUNCTION
 ///////////////////////////////////////////
 
-database.searchListings = function(query /*STRING*/) {
+database.searchListings = function(query /*STRING*/, sequelize) {
     
-  query = '6';
 
-  const Op = Sequelize.Op; 
+  const Op = sequelize.Op; 
   
+  query = '%' + query + '%';
 
-  // FIND ALL LISTINGS WITH THIS BUILDING TYPE: APARTMENT/HOME 
-  Listings.findAll({
-    [Op.or]: [
-      {
-        where: {
+  return Listings.findAll({
+    where: {
+      $or: [
+        {
           building_type: {
-            [Op.eq]: query
+            $like: query
           }
-        }
-      }, 
-      {
-        where: {
+        }, 
+        {
           address: {
-            [Op.eq]: query
+            $like: query
           }
-        }
-      },
-      {
-        where: {
+        }, 
+        {
           city: {
-            [Op.eq]: query
+            $like: query
           }
-        }
-      },
-      {
-        where: {
+        }, 
+        {
           zip: {
-            [Op.eq]: query
-          }
-        }
-      }, 
-      {
-        where: {
+            $like: query
+          }, 
           state: {
-            [Op.eq]: query
+            $like: query
           }
         }
-      }
-    ]
-  }).then(function(listings) {
-
-    console.log("Query: " + query); 
-
-    let resultList = new Array();
-
-    listings.forEach(function (listing) {
-      resultList.push(listing.dataValues);
-    });
-
-    console.log(resultList);
-    return resultList;
-
+      ]
+    }
   });
+
+  // .then(function(listings) {
+
+  //   console.log("Query: " + query); 
+
+  //   let resultList = new Array();
+
+  //   listings.forEach(function (listing) {
+  //     resultList.push(listing.dataValues);
+  //   });
+
+  //   console.log(resultList);
+  //   return resultList;
+
+  // });
 
 }
 

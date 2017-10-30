@@ -2,9 +2,13 @@ var express = require('express');
 var router = express.Router();
 var url = require('url');
 var about = require('./about');
+var bodyParser = require('body-parser');
+var database = require('../db/database.js');
+var Sequelize = require('sequelize');
 
-var Express = express(); 
-
+// var express = require('express');
+// var bodyParser = require('body-parser');
+var app = express(); 
 router.use('/about', about);
 
 var title = 'HOMIEZ';
@@ -52,21 +56,50 @@ router.get('/', function(req, res, next) {
 		about: home + about,
 		agents: home + agents,
 		contact: home + contact,
-		search: current + 'search',
+		search: home + '/search',
 		listItems:listItems
 	});
 
 });
 
-router.get('#search', function(req, res, next){
+router.post('/search', function(req, res, next){
+
 	var input = req.body.searchBar;
 	console.log("Searched for " + input);
-	res.end();
+
+	var sequelize = database.connect(); 
+	database.isAuthenticated(sequelize); 
+
+	database.searchListings(input, sequelize).then(function (listings) {
+
+	    console.log("Query: " + input); 
+
+	    let resultList = new Array();
+
+	    listings.forEach(function (listing) {
+	      resultList.push(listing.dataValues);
+	    });
+
+	    console.log(resultList);
+	    listItems = resultList
+
+	    res.render('index', {
+	    	title: title , 
+			home: current,
+			about: home + about,
+			agents: home + agents,
+			contact: home + contact,
+			search: home + '/search',
+			listItems:listItems
+		}); 
+
+	});
+
+
 });
 
 /* GET about page. */
 router.get('/about', function(req, res, next) {
- 	
 
 	res.render('about', { 
 		title: title , 
@@ -79,7 +112,7 @@ router.get('/about', function(req, res, next) {
 		menaLink: home + about  +  '/mena', 
 		noraldLink: home + about  +  '/norald'
 	});
-	
+
 });
 
 /* GET Agents page. */
@@ -92,6 +125,7 @@ router.get('/agents', function(req, res, next) {
 		agents: current,
 		contact: home + contact
 	});
+
 });
 
 /* GET Contact page. */
