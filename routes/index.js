@@ -18,33 +18,35 @@ var agents = '/agents';
 var contact = '/contact';
 var current = "#";
 
-var listItems = {
-	'1': {
-	address: 'some address', 
-	zip: '12341', 
-	city: 'Some city'
-	}, 
-	'2': {
-	address: 'some address', 
-	zip: '12341', 
-	city: 'Some city'
-	}, 
-	'3': {
-	address: 'some address', 
-	zip: '12341', 
-	city: 'Some city'
-	}, 
-	'4': {
-	address: 'some address', 
-	zip: '12341', 
-	city: 'Some city'
-	}, 
-	'5': {
-	address: 'some address', 
-	zip: '12341', 
-	city: 'Some city'
-	}
-}; 
+// var listItems = {
+// 	'1': {
+// 	address: 'some address', 
+// 	zip: '12341', 
+// 	city: 'Some city'
+// 	}, 
+// 	'2': {
+// 	address: 'some address', 
+// 	zip: '12341', 
+// 	city: 'Some city'
+// 	}, 
+// 	'3': {
+// 	address: 'some address', 
+// 	zip: '12341', 
+// 	city: 'Some city'
+// 	}, 
+// 	'4': {
+// 	address: 'some address', 
+// 	zip: '12341', 
+// 	city: 'Some city'
+// 	}, 
+// 	'5': {
+// 	address: 'some address', 
+// 	zip: '12341', 
+// 	city: 'Some city'
+// 	}
+// }; 
+
+var listItems = {}; 
 
 
 /* GET home page. */

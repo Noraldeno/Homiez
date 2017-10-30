@@ -66,6 +66,7 @@ var sequelize = new Sequelize(databaseName, username, password, {
     listing_id: Sequelize.INTEGER
   });
 
+// ___________________________________________
 
 
 
@@ -260,7 +261,9 @@ database.searchListings = function(query /*STRING*/, sequelize) {
         {
           zip: {
             $like: query
-          }, 
+          }
+        }, 
+        {
           state: {
             $like: query
           }
@@ -268,23 +271,56 @@ database.searchListings = function(query /*STRING*/, sequelize) {
       ]
     }
   });
-
-  // .then(function(listings) {
-
-  //   console.log("Query: " + query); 
-
-  //   let resultList = new Array();
-
-  //   listings.forEach(function (listing) {
-  //     resultList.push(listing.dataValues);
-  //   });
-
-  //   console.log(resultList);
-  //   return resultList;
-
-  // });
-
 }
+
+
+
+
+
+
+
+// var randomBuilding = function () {
+//   var x = Math.random() * (2 - 1) + 1;
+//   if(x == 2) {
+//     return "Home";
+//   } else {
+//     return "Apartment"
+//   }
+// }
+
+// var randomBoolean = function () {
+//   var x = Math.random() * (2 - 1) + 1;
+//   if(x == 2) {
+//     return true;
+//   } else {
+//     return false; 
+//   }
+// }
+
+// var randomNumber = function (min, max) {
+//   return Math.random() * (max - min) + min;
+// };
+
+// addListing(
+//   randomNumber(1, 100), /* INT */                                 
+//   randomNumber(1, 5),  INT 
+//   randomNumber(1, 8), /* INT */
+//   randomNumber(500, 15000), /* INT */
+//   randomBuilding(), /* STRING */
+//   randomNumber(25000, 500000), /* FLOAT */
+//   "325 buckinghame way",  /*STRING*/ 
+//   randomBoolean(), /* BOOLEAN */
+//   randomBoolean(), /* BOOLEAN */
+//   randomNumber(1, 5), /* INT */
+//   "San Francisco", /* STRING */
+//   "94132", /* STRING */
+//   "CA", /* STRING */
+//   "description", /* STRING */
+//   randomBoolean(), /* BOOLEAN */
+//   "/images/andrew-background.jpeg" /* STRING */
+//   ); 
+
+
 
 module.exports = database; 
 
@@ -298,3 +334,5 @@ node_modules/.bin/sequelize model:create --name Media --attributes content:text,
 
 node_modules/.bin/sequelize model:create --name Messages --attributes user_id_sent_message:integer,message_body:text,user_id_recieved_message:integer
 */
+
+

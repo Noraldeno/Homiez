@@ -9,28 +9,32 @@ var namespace = require('express-namespace');
 var hbs = require('express-handlebars');
 
 
-// import database;
+// // import database;
 const database = require('./db/database');
-let connection = database.connect(); 
+var connection = database.connect(); 
 
-// connection.addListing(
-//   user_id, /* INT */                                 
-//   bedrooms, /* INT */
-//   bathrooms, /* INT */
-//   square_feet, /* INT */
-//   building_type, /* STRING */
-//   price, /* FLOAT */
-//   address,  STRING 
-//   kitchen, /* BOOLEAN */
-//   living_room, /* BOOLEAN */
-//   floors, /* INT */
-//   city, /* STRING */
-//   zip, /* STRING */
-//   state, /* STRING */
-//   description, /* STRING */
-//   parking, /* BOOLEAN */
-//   picture /* STRING */
-//   ); 
+database.isAuthenticated(connection); 
+
+// database.addListing(
+//   7, /* INT */                                 
+//   9, /* INT */
+//   5, /* INT */
+//   2000, /* INT */
+//   "House", /* STRING */
+//   750000.5, /* FLOAT */
+//   "1 Hacker Way", /* STRING */
+//   true, /* BOOLEAN */
+//   true, /* BOOLEAN */
+//   4, /* INT */
+//   "Menlo Park", /* STRING */
+//   "94025", /* STRING */
+//   "California", /* STRING */
+//   "description", /* STRING */
+//   true, /* BOOLEAN */
+//   "/images/andrew-background.jpeg" /* STRING */ 
+//   );
+
+
 
 // //////
 
