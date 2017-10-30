@@ -9,18 +9,19 @@ var namespace = require('express-namespace');
 var hbs = require('express-handlebars');
 
 
-/*/ import database 
-const database = require('./db/database');
-let connection = database.connect(); 
+// import database 
+// const database = require('./db/database');
+// let connection = database.connect(); 
 
-connection.sync().then(function () {
+// connection.sync().then(function () {
 
-  database.searchListings('dfsfgsdfgdfs');
-});
+//   database.searchListings('dfsfgsdfgdfs');
+// });
 
-// /////*/
+// //////
 
-var routes = require('./routes');
+var index = require('./routes/index');
+var about = require('./routes/about');
 
 var router = express.Router(); 
 var app = express();
@@ -41,20 +42,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, './db/database.js')));
 
 
-/*router.use('/', routes);
-router.use('/about', about);
-router.use('/', about);
-router.use('/about/benedikt', about); 
-router.use('/about/mena', about); 
-router.use('/about/norald', about);*/
 
-<<<<<<< HEAD
 router.use('/', index);
 router.use('/about', index);
 app.use('/fa17g15', router); 
-=======
-app.use('/fa17g15', routes); 
->>>>>>> Create_Homepage_v2
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

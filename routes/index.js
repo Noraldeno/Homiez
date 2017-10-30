@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var url = require('url');
-var database = require('../db/database.js');
 
 var about = require('./about');
 
@@ -34,6 +33,11 @@ var listItems = {
 	address: 'some address', 
 	zip: '12341', 
 	city: 'Some city'
+	}, 
+	'5': {
+	address: 'some address', 
+	zip: '12341', 
+	city: 'Some city'
 	}
 }; 
 
@@ -51,31 +55,6 @@ router.get('/', function(req, res, next) {
 	});
 
 });
-
-app.post('/', function(req, res, next){
-    var input = req.body.searchBar;
-    console.log("Searched for " + input);
-    res.render('index', {
-        title: title , 
-        home: current,
-        about: home + about,
-        agents: home + agents,
-        contact: home + contact,
-        listItems: listItems,
-        input: 'yeah'
-    });
-    /*connection.sync().then(function () {
-      database.searchListings('My search query');
-    });*/
-});
-
-router.get('/get-listings', function(req, res, next) {
-	let connection = database.connect(); 
-	
-
-	connection.close(); 
-});
-
 
 /* GET about page. */
 router.get('/about', function(req, res, next) {
@@ -117,6 +96,5 @@ router.get('/contact', function(req, res, next) {
 		contact: current
 	});
 });
-
 
 module.exports = router;
