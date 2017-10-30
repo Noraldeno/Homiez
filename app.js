@@ -55,13 +55,13 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
-app.use(lessMiddleware(path.join(__dirname, 'public')));
+// app.use(lessMiddleware(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, './db/database.js')));
 // app.use(express.static(path.join(__dirname, './public/js/search.js')));
 // app.use(express.static(path.join(__dirname, './public/css/style.css')));
-app.use('/style', express.static(path.join(__dirname, '/public/css/style')));
-app.use('/search', express.static(path.join(__dirname, '/public/js/search')));
+// app.use('/style', express.static(path.join(__dirname, '/public/css/style')));
+// app.use('/search', express.static(path.join(__dirname, '/public/js/search')));
 
 
 
