@@ -69,7 +69,7 @@ app.use('/css', express.static(path.join(__dirname, 'public')));
 
 router.use('/', index);
 router.use('/about', index);
-app.use('/fa17g15', router); 
+app.use('/', router); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
