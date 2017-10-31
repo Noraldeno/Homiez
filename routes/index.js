@@ -53,7 +53,7 @@ var listItems = {};
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/fa17g15', function(req, res, next) {
 
 	res.render('index', { 
 		title: title , 
