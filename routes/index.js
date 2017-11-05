@@ -122,11 +122,13 @@ router.get('/agents', function(req, res, next) {
 router.get('/contact', function(req, res, next) {
 
 	res.render('contact', {  
-		title: title , 
+		title: title ,
 		home: home,
 		about: home + about,
 		agents: home + agents,
-		contact: current
+		contact: current,
+		latitude: '37.721900',
+		longitude: '-122.478225'
 	});
 });
 
