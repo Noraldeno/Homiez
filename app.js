@@ -9,11 +9,11 @@ var namespace = require('express-namespace');
 var hbs = require('express-handlebars');
 
 
-// // import database;
-const database = require('./db/database');
-var connection = database.connect(); 
+// // // import database;
+// const database = require('./db/database');
+// var connection = database.connect(); 
 
-database.isAuthenticated(connection); 
+// database.isAuthenticated(connection); 
 
 // database.addListing(
 //   7, /* INT */                                 
@@ -34,8 +34,6 @@ database.isAuthenticated(connection);
 //   "/images/andrew-background.jpeg" /* STRING */ 
 //   );
 
-
-
 // //////
 
 var index = require('./routes/index');
@@ -43,6 +41,8 @@ var about = require('./routes/about');
 
 var router = express.Router(); 
 var app = express();
+
+
 
 // view engine setup
 app.engine('hbs', hbs({extname: 'hbs', defaultLayout: 'layout', layoutsDir: __dirname + '/views/layouts/'}));
@@ -56,30 +56,29 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 // app.use(lessMiddleware(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, './db/database.js')));
+
+router.use('/', index);
+router.use('/about', about);
+
+router.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, './db/database.js')));
 // app.use(express.static(path.join(__dirname, './public/js/search.js')));
 // app.use(express.static(path.join(__dirname, './public/css/style.css')));
 // app.use('/style', express.static(path.join(__dirname, '/public/css/style')));
 // app.use('/search', express.static(path.join(__dirname, '/public/js/search')));
-app.use('/css', express.static(path.join(__dirname, 'public')));
+// app.use('/css', express.static(path.join(__dirname, 'public')));
 
 
-
-
-router.use('/', index);
-router.use('/about', index);
-app.use('/', router); 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+router.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+router.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -90,13 +89,13 @@ app.use(function(err, req, res, next) {
 });
 // ////////////////////////////////////////
 
-app.get('/', function(req,res) {
+router.get('/', function(req,res) {
   database.searchListings('My Query').then(function(results) {
     return results; 
   });
 });
 
-app.post('/', function(req, res) {
+router.post('/', function(req, res) {
   console.log('______________________');
   console.log('______________________');
   console.log('______________________');
@@ -105,6 +104,9 @@ app.post('/', function(req, res) {
   console.log(req.body); 
   res.send(200);
 });
+
+app.use('/fa17g15/', router); 
+
 
 
 module.exports = app;

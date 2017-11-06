@@ -5,55 +5,23 @@ var about = require('./about');
 var bodyParser = require('body-parser');
 var database = require('../db/database.js');
 var Sequelize = require('sequelize');
+var path = require('path');
 
-// var express = require('express');
-// var bodyParser = require('body-parser');
 var app = express(); 
-router.use('/about', about);
-router.use(express.static(__dirname + '/public'));
 
 var title = 'HOMIEZ';
 var home = '/fa17g15';
 var about = '/about';
 var agents = '/agents';
 var contact = '/contact';
+var cssPath = '/css/style.css'
 var current = "#";
-
-// var listItems = {
-// 	'1': {
-// 	address: 'some address', 
-// 	zip: '12341', 
-// 	city: 'Some city'
-// 	}, 
-// 	'2': {
-// 	address: 'some address', 
-// 	zip: '12341', 
-// 	city: 'Some city'
-// 	}, 
-// 	'3': {
-// 	address: 'some address', 
-// 	zip: '12341', 
-// 	city: 'Some city'
-// 	}, 
-// 	'4': {
-// 	address: 'some address', 
-// 	zip: '12341', 
-// 	city: 'Some city'
-// 	}, 
-// 	'5': {
-// 	address: 'some address', 
-// 	zip: '12341', 
-// 	city: 'Some city'
-// 	}
-// }; 
 
 var listItems = {}; 
 
 
-
-
 /* GET home page. */
-router.get('/fa17g15', function(req, res, next) {
+router.get('/', function(req, res, next) {
 
 	res.render('index', { 
 		title: title , 
@@ -62,13 +30,25 @@ router.get('/fa17g15', function(req, res, next) {
 		agents: home + agents,
 		contact: home + contact,
 		search: home + '/search',
+		css: home + cssPath,
 		listItems:listItems
 	});
 
 });
 
-router.post('/search', function(req, res, next){
+// router.get('/css/style.css', function(req, res, next) {
 
+// 	res.sendFile('../public/css/style.css');
+
+// });
+
+app.get('17015/fa17g15//css/style.css', function(req, res, next) {
+
+	res.sendFile(path.join(__dirname, '/../public/css/style.css'));
+	
+});
+
+router.post('/search', function(req, res, next){
 	var input = req.body.searchBar;
 	console.log("Searched for " + input);
 
@@ -95,9 +75,26 @@ router.post('/search', function(req, res, next){
 			agents: home + agents,
 			contact: home + contact,
 			search: home + '/search',
+			css: home + cssPath,
 			listItems:resultList
 		}); 
 
+	});
+
+});
+
+router.get('/search', function(req, res, next) {
+
+
+	res.render('index', { 
+		title: title , 
+		home: current,
+		about: home + about,
+		agents: home + agents,
+		contact: home + contact,
+		search: home + '/search',
+		css: home + cssPath,
+		listItems:listItems
 	});
 
 });
@@ -144,5 +141,33 @@ router.get('/contact', function(req, res, next) {
 	});
 });
 
-
 module.exports = router;
+
+
+// var listItems = {
+// 	'1': {
+// 	address: 'some address', 
+// 	zip: '12341', 
+// 	city: 'Some city'
+// 	}, 
+// 	'2': {
+// 	address: 'some address', 
+// 	zip: '12341', 
+// 	city: 'Some city'
+// 	}, 
+// 	'3': {
+// 	address: 'some address', 
+// 	zip: '12341', 
+// 	city: 'Some city'
+// 	}, 
+// 	'4': {
+// 	address: 'some address', 
+// 	zip: '12341', 
+// 	city: 'Some city'
+// 	}, 
+// 	'5': {
+// 	address: 'some address', 
+// 	zip: '12341', 
+// 	city: 'Some city'
+// 	}
+// }; 
