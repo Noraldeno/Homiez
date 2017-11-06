@@ -14,7 +14,7 @@ var home = '/fa17g15';
 var about = '/about';
 var agents = '/agents';
 var contact = '/contact';
-var cssPath = '/css/style.css'
+var cssPath = '/css/style.css' //
 var current = "#";
 
 var listItems = {}; 
@@ -36,17 +36,6 @@ router.get('/', function(req, res, next) {
 
 });
 
-// router.get('/css/style.css', function(req, res, next) {
-
-// 	res.sendFile('../public/css/style.css');
-
-// });
-
-app.get('17015/fa17g15//css/style.css', function(req, res, next) {
-
-	res.sendFile(path.join(__dirname, '/../public/css/style.css'));
-	
-});
 
 router.post('/search', function(req, res, next){
 	var input = req.body.searchBar;
