@@ -61,6 +61,7 @@ router.use('/', index);
 router.use('/about', about);
 
 router.use(express.static(path.join(__dirname, 'public')));
+router.use(express.static(path.join(__dirname, 'db/media')));
 // app.use(express.static(path.join(__dirname, './db/database.js')));
 // app.use(express.static(path.join(__dirname, './public/js/search.js')));
 // app.use(express.static(path.join(__dirname, './public/css/style.css')));
