@@ -69,7 +69,9 @@ router.use(express.static(path.join(__dirname, 'db/media')));
 // app.use('/search', express.static(path.join(__dirname, '/public/js/search')));
 // app.use('/css', express.static(path.join(__dirname, 'public')));
 
-
+router.use('/', index);
+router.use('/about', index);
+app.use('/fa17g15', router); 
 
 // catch 404 and forward to error handler
 router.use(function(req, res, next) {
