@@ -22,12 +22,8 @@
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
-			<li class="nav-item">
-				<a class="nav-link" href={{signUp}}>Sign Up</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href={{login}}>Login</a>
-			</li>
+			<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#signUp">Sign Up</button>
+			<button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="login">Login</button>
 		</ul>
 	</div>
 </nav>
@@ -46,6 +42,21 @@
 					</div>
 				</div>	
 			</form>
+	</div>
+</div>
+
+<!--Sign Up-->
+<div class="modal fade" id="signUp" tabindex="-1" role="dialog" aria-labelledby="mySignUp" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="mySignUp">Sign Up</h5>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Sign Up</button>
+			</div>
+		</div>
 	</div>
 </div>
 
