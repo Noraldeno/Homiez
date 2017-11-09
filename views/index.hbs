@@ -1,6 +1,6 @@
 <!--Navigation Bar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-faded">
-	<a class="navbar-brand" href={{home}}><img class="logo" src="fa17g15/images/logo/0201.png"></a>
+	<a class="navbar-brand" href={{home}}><img class="logo" src={{logo}}></a>
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#content" aria-controls="content" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -35,10 +35,16 @@
 <!--Page Header/Jumbotron-->
 <div class="container-fluid">
 	<div class="jumbotron">
-		<h1>{{title}}</h1>
+		<img class="homeLogo" src="/fa17g15/images/logo/0101 (1).png">
 			<form action={{search}} method="post">
-				<input type="text" name="searchBar" placehoder="Search Listings">
-				<input type="submit" value="Go" id="submitThis">	
+				<div class="col-lg-6">
+					<div class="input-group">
+						<input type="text" class="form-control" placehoder="Search Listings">
+						<span class="input-group-btn">
+							<button class="btn btn-default" type="button">Go!</button>
+						</span>
+					</div>
+				</div>	
 			</form>
 	</div>
 </div>

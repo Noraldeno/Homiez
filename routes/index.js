@@ -11,11 +11,12 @@ var app = express();
 
 var title = 'HOMIEZ';
 var home = '/fa17g15';
-var about = '/about';
-var agents = '/agents';
-var contact = '/contact';
-var cssPath = '/css/style.css' //
-var current = "#";
+var about = home + '/about';
+var agents = home + '/agents';
+var contact = home + '/contact';
+var cssPath = home + '/css/style.css'; //
+var current = '#';
+var logo = '/fa17g15/images/logo/0201.png';
 
 var listItems = {}; 
 
@@ -24,13 +25,14 @@ var listItems = {};
 router.get('/', function(req, res, next) {
 
 	res.render('index', { 
-		title: title , 
+		logo: logo, 
+		title: title,
 		home: current,
-		about: home + about,
-		agents: home + agents,
-		contact: home + contact,
+		about: about,
+		agents: agents,
+		contact: contact,
 		search: home + '/search',
-		css: home + cssPath,
+		css: cssPath,
 		listItems:listItems
 	});
 
@@ -58,14 +60,15 @@ router.post('/search', function(req, res, next){
 	    
 
 	    res.render('index', {
-	    	title: title , 
-			home: current,
-			about: home + about,
-			agents: home + agents,
-			contact: home + contact,
-			search: home + '/search',
-			css: home + cssPath,
-			listItems:resultList
+	    	title: title ,
+		logo: logo, 
+		home: current,
+		about: about,
+		agents: agents,
+		contact: contact,
+		search: home + '/search',
+		css: cssPath,
+		listItems:resultList
 		}); 
 
 	});
@@ -78,11 +81,11 @@ router.get('/search', function(req, res, next) {
 	res.render('index', { 
 		title: title , 
 		home: current,
-		about: home + about,
-		agents: home + agents,
-		contact: home + contact,
+		about: about,
+		agents: agents,
+		contact: contact,
 		search: home + '/search',
-		css: home + cssPath,
+		css: cssPath,
 		listItems:listItems
 	});
 
@@ -92,15 +95,17 @@ router.get('/search', function(req, res, next) {
 router.get('/about', function(req, res, next) {
 
 	res.render('about', { 
-		title: title , 
+		title: title ,
+		logo: logo, 
 		home:  home, 
 		about: current,
-		agents: home + agents,
-		contact: home + contact,
-		andrewLink: home + about  + '/andrew' , 
-		benediktLink: home + about  +  '/benedikt', 
-		menaLink: home + about  +  '/mena', 
-		noraldLink: home + about  +  '/norald'
+		agents:  agents,
+		contact:  contact,
+		andrewLink: about  + '/andrew' , 
+		benediktLink: about  +  '/benedikt', 
+		menaLink: about  +  '/mena', 
+		noraldLink: about  +  '/norald',
+		css: cssPath
 	});
 
 });
@@ -109,11 +114,12 @@ router.get('/about', function(req, res, next) {
 router.get('/agents', function(req, res, next) {
 
 	res.render('agents', { 
-		title: title , 
+		title: logo , 
 		home: home,
-		about: home + about,
+		about: about,
 		agents: current,
-		contact: home + contact
+		contact: contact,
+		css: cssPath
 	});
 
 });
@@ -123,10 +129,12 @@ router.get('/contact', function(req, res, next) {
 
 	res.render('contact', {  
 		title: title ,
+		logo: logo,
 		home: home,
-		about: home + about,
-		agents: home + agents,
+		about: about,
+		agents: agents,
 		contact: current,
+		css: cssPath,
 		latitude: '37.721900',
 		longitude: '-122.478225'
 	});
