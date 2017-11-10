@@ -9,7 +9,7 @@ ENV.username = function () {
 }
 
 ENV.password = function () {
-	return 'imUstbec@mele5s';
+	return '';
 }
 
 
