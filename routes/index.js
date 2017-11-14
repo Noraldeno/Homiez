@@ -61,14 +61,14 @@ router.post('/search', function(req, res, next){
 
 	    res.render('index', {
 	    	title: title ,
-		logo: logo, 
-		home: current,
-		about: about,
-		agents: agents,
-		contact: contact,
-		search: home + '/search',
-		css: cssPath,
-		listItems:resultList
+			logo: logo, 
+			home: current,
+			about: about,
+			agents: agents,
+			contact: contact,
+			search: home + '/search',
+			css: cssPath,
+			listItems:resultList
 		}); 
 
 	});
@@ -90,6 +90,7 @@ router.get('/search', function(req, res, next) {
 	});
 
 });
+
 
 /* GET about page. */
 router.get('/about', function(req, res, next) {
@@ -114,7 +115,8 @@ router.get('/about', function(req, res, next) {
 router.get('/agents', function(req, res, next) {
 
 	res.render('agents', { 
-		title: logo , 
+		title: title, 
+		logo: logo , 
 		home: home,
 		about: about,
 		agents: current,

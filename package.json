@@ -6,10 +6,10 @@
     "start": "node ./bin/www"
   },
   "dependencies": {
-    "body-parser": "^1.17.2",
+    "body-parser": "^1.18.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
-    "express": "~4.15.2",
+    "express": "^4.15.5",
     "express-handlebars": "^3.0.0",
     "express-namespace": "^0.1.1",
     "hbs": "~4.0.1",
@@ -17,9 +17,9 @@
     "less-watch-compile": "^1.1.8",
     "morgan": "~1.8.1",
     "mysql2": "^1.4.2",
-    "sequelize": "^4.19.0",
+    "sequelize": "^4.22.5",
     "sequelize-cli": "^3.0.0",
-    "serve-favicon": "~2.4.2"
+    "serve-favicon": "^2.4.5"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
