@@ -100,7 +100,11 @@ router.get('/about', function(req, res, next) {
 		andrewLink: home + about  + '/andrew' , 
 		benediktLink: home + about  +  '/benedikt', 
 		menaLink: home + about  +  '/mena', 
-		noraldLink: home + about  +  '/norald'
+		noraldLink: home + about  +  '/norald',
+		omerLink: home + about  +  '/omer',
+		saudhLink: home + about  +  '/saudh',
+		abdulLink: home + about  +  '/abdul',
+		praveenLink: home + about  +  '/praveen',
 	});
 
 });

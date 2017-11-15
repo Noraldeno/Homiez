@@ -108,6 +108,6 @@ router.post('/', function(req, res) {
 
 app.use('/fa17g15/', router); 
 
-
+app.listen(3000)
 
 module.exports = app;

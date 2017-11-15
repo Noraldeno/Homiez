@@ -3,6 +3,8 @@ var database = module.exports = {};
 // Initializing database connection
 const Sequelize = require('sequelize');
 var credentials = require('../creds/credentials'); 
+const Op = Sequelize.Op;
+
 
 const username = credentials.username(); 
 const password = credentials.password(); 
@@ -12,7 +14,13 @@ const databaseName = credentials.database();
 var sequelize = new Sequelize(databaseName, username, password, {
    host: 'localhost',
    port: 3306,
-   dialect: 'mysql'
+   dialect: 'mysql',
+   operatorsAliases: Op,
+   pool:{
+    max: 5,
+    min: 0,
+    idle: 10000
+   }
 }); 
 
 

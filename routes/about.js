@@ -57,5 +57,53 @@ router.get('/norald', function(req, res, next) {
 	});
 });
 
+/* GET Omer Aslam page. */
+router.get('/omer', function(req, res, next) {
+  res.render('omer', { 
+  		title:title ,
+  		norald: 'Omer Aslam',
+  		home: home,
+		about: current,
+		agents: home + agents,
+		contact: home + contact
+	});
+});
+
+/* GET Saud Habib page. */
+router.get('/saudh', function(req, res, next) {
+  res.render('saudh', { 
+  		title:title ,
+  		norald: 'Saudh Khan Lodi',
+  		home: home,
+		about: current,
+		agents: home + agents,
+		contact: home + contact
+	});
+});
+
+/* GET Guda Praveen Kumar page. */
+router.get('/abdul', function(req, res, next) {
+  res.render('abdul', { 
+  		title:title ,
+  		norald: 'Abdul Bari',
+  		home: home,
+		about: current,
+		agents: home + agents,
+		contact: home + contact
+	});
+});
+
+/* GET Abdul Bari page. */
+router.get('/praveen', function(req, res, next) {
+  res.render('praveen', { 
+  		title:title ,
+  		norald: 'Guda Praveen Kumar',
+  		home: home,
+		about: current,
+		agents: home + agents,
+		contact: home + contact
+	});
+});
+
 
 module.exports = router;
