@@ -8,64 +8,125 @@ var about = home + '/about';
 var agents = home + '/agents';
 var contact = home + '/contact';
 var current = '#';
+var currentHBS = '';
 var cssPath = home + '/css/style.css';
 var logo = '/fa17g15/images/logo/0201.png';
 
 /* GET andrew page. */
 router.get('/andrew', function(req, res, next) {
-  res.render('andrew', { 
+	currentHBS = 'andrew';
+  res.render(currentHBS, { 
   		title: title ,
 		logo: logo,
   		andrew: 'Andrew Patterson',
 		home: home,
-		about: current,
+		about: about,
 		agents: agents,
 		contact: contact,
+		login: home + '/login',
+		signUp: home + '/signUp',
 		css: cssPath
 	});
 });
 
 /* GET benedikt page. */
 router.get('/benedikt', function(req, res, next) {
-	res.render('benedikt', { 
+	currentHBS = 'benedikt';
+	res.render(currentHBS, { 
 		title: title ,
 		logo: logo,
 		benedikt: 'Benedikt Anselment',
 		home: home,
-		about: current,
+		about: about,
 		agents: home + agents,
 		contact: home + contact,
+		login: home + '/login',
+		signUp: home + '/signUp',
 		css: cssPath
 	});
 });
 
 /* GET mena page. */
 router.get('/mena', function(req, res, next) {
-  res.render('mena', { 
+	currentHBS = 'mena';
+  res.render(currentHBS, { 
   		title:title,
 		logo: logo,
   		mena: 'Mena Morkos',
   		home: home,
-		about: current,
+		about: about,
 		agents: agents ,
 		contact: contact,
+		login: about + '/login',
+		signUp: home + '/signUp',
 		css: cssPath
 	});
 });
 
 /* GET norald page. */
 router.get('/norald', function(req, res, next) {
-  res.render('norald', { 
+	currentHBS = 'norald';
+  res.render(currentHBS, { 
   		title:title,
 		logo: logo,
   		norald: 'Norald Alejo',
   		home: home,
-		about: current,
+		about: about,
 		agents: agents,
 		contact: contact,
+		login: home + '/login',
+		signUp: home + '/signUp',
 		css: cssPath
 	});
 });
 
+router.post('/signUp', function(req, res, next){
+	var firstName = req.body.firstName;
+	var lastName = req.body.lastName;
+	var username = req.body.newUsername;
+	var createPassword = req.body.createPassword;
+	var confirmPassword = req.body.confirmPassword;
 
+	console.log("First Name " + firstName);
+	console.log("Last Name " + lastName);
+	console.log("Username " + username);
+	console.log("Create Password " + createPassword);
+	console.log("Confirm Password " + confirmPassword);
+
+	res.render(currentHBS, { 
+		logo: logo, 
+		title: title,
+		home: home,
+		about: about,
+		agents: agents,
+		contact: contact,
+		search: home + '/search',
+		login: home + '/login',
+		signUp: home + '/signUp',
+		css: cssPath,
+	});
+
+});
+
+router.post('/login', function(req, res, next){
+	var username = req.body.username;
+	var password = req.body.loginPassword;
+
+	console.log("Username " + username);
+	console.log("Password " + password);
+
+	res.render(currentHBS, { 
+		logo: logo, 
+		title: title,
+		home: home,
+		about: about,
+		agents: agents,
+		contact: contact,
+		search: home + '/search',
+		login: home + '/login',
+		signUp: home + '/signUp',
+		css: cssPath,
+	});
+
+});
 module.exports = router;
