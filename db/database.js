@@ -14,13 +14,7 @@ const databaseName = credentials.database();
 var sequelize = new Sequelize(databaseName, username, password, {
    host: 'localhost',
    port: 3306,
-   dialect: 'mysql',
-   operatorsAliases: Op,
-   pool:{
-    max: 5,
-    min: 0,
-    idle: 10000
-   }
+   dialect: 'mysql'
 }); 
 
 
