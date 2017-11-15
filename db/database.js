@@ -3,6 +3,8 @@ var database = module.exports = {};
 // Initializing database connection
 const Sequelize = require('sequelize');
 var credentials = require('../creds/credentials'); 
+const Op = Sequelize.Op;
+
 
 const username = credentials.username(); 
 const password = credentials.password(); 
