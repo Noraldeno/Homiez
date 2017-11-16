@@ -1,6 +1,6 @@
 <!--Navigation Bar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-faded">
-	<a class="navbar-brand" href={{home}}>{{title}}</a>
+	<a class="navbar-brand" href={{home}}><img class="logo" src={{logo}}></a>
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#content" aria-controls="content" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -22,18 +22,14 @@
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
-			<li class="nav-item">
-				<a class="nav-link" href={{signUp}}>Sign Up</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href={{login}}>Login</a>
-			</li>
+			<button type="button" class="btn btn-outline-secondary" id="loginBtn" data-toggle="modal" data-target="#signUp">Sign Up</button>
+			<button type="button" class="btn btn-outline-secondary" id="loginBtn" data-toggle="modal" data-target="#login">Login</button>
 		</ul>
 	</div>
 </nav>
 
 <div class="container-fluid" style="text-align: center">
-	<img src="https://static.pexels.com/photos/190574/pexels-photo-190574.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb" class="img-fluid"/>
+	<img src="/fa17g15/images/norald_background.jpeg" class="img-fluid"/>
 	<h1>{{norald}}</h1>
 	<h2>A senior computer engineer major at sfsu</h2> 
 </div>

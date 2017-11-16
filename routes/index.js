@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var url = require('url');
-var about = require('./about');
+//var about = require('./about');
 var bodyParser = require('body-parser');
 var database = require('../db/database.js');
 var Sequelize = require('sequelize');
@@ -11,11 +11,14 @@ var app = express();
 
 var title = 'HOMIEZ';
 var home = '/fa17g15';
-var about = '/about';
-var agents = '/agents';
-var contact = '/contact';
-var cssPath = '/css/style.css' //
-var current = "#";
+var about = home + '/about';
+var agents = home + '/agents';
+var contact = home + '/contact';
+var cssPath = home + '/css/style.css'; //
+var current = '#';
+var currentHBS = '';
+
+var logo = '/fa17g15/images/logo/0201.png';
 
 var listItems = {}; 
 
@@ -23,19 +26,75 @@ var listItems = {};
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
+	currentHBS = 'index';
+
 	res.render('index', { 
-		title: title , 
+		logo: logo, 
+		title: title,
 		home: current,
-		about: home + about,
-		agents: home + agents,
-		contact: home + contact,
+		about: about,
+		agents: agents,
+		contact: contact,
 		search: home + '/search',
-		css: home + cssPath,
+		login: home + '/login',
+		signUp: home + '/signUp',
+		css: cssPath,
 		listItems:listItems
 	});
 
 });
 
+router.post('/signUp', function(req, res, next){
+	var firstName = req.body.firstName;
+	var lastName = req.body.lastName;
+	var username = req.body.newUsername;
+	var createPassword = req.body.createPassword;
+	var confirmPassword = req.body.confirmPassword;
+
+	console.log("First Name " + firstName);
+	console.log("Last Name " + lastName);
+	console.log("Username " + username);
+	console.log("Create Password " + createPassword);
+	console.log("Confirm Password " + confirmPassword);
+
+	res.render(currentHBS, { 
+		logo: logo, 
+		title: title,
+		home: home,
+		about: about,
+		agents: agents,
+		contact: contact,
+		search: home + '/search',
+		login: home + '/login',
+		signUp: home + '/signUp',
+		css: cssPath,
+		listItems:listItems
+	});
+
+});
+
+router.post('/login', function(req, res, next){
+	var username = req.body.username;
+	var password = req.body.loginPassword;
+
+	console.log("Username " + username);
+	console.log("Password " + password);
+
+	res.render(currentHBS, { 
+		logo: logo, 
+		title: title,
+		home: home,
+		about: about,
+		agents: agents,
+		contact: contact,
+		search: home + '/search',
+		login: home + '/login',
+		signUp: home + '/signUp',
+		css: cssPath,
+		listItems:listItems
+	});
+
+});
 
 router.post('/search', function(req, res, next){
 	var input = req.body.searchBar;
@@ -58,13 +117,16 @@ router.post('/search', function(req, res, next){
 	    
 
 	    res.render('index', {
-	    	title: title , 
+	    	title: title ,
+			logo: logo, 
 			home: current,
-			about: home + about,
-			agents: home + agents,
-			contact: home + contact,
+			about: about,
+			agents: agents,
+			contact: contact,
 			search: home + '/search',
-			css: home + cssPath,
+			login: home + '/login',
+			signUp: home + '/signUp',
+			css: cssPath,
 			listItems:resultList
 		}); 
 
@@ -74,50 +136,62 @@ router.post('/search', function(req, res, next){
 
 router.get('/search', function(req, res, next) {
 
-
 	res.render('index', { 
 		title: title , 
 		home: current,
-		about: home + about,
-		agents: home + agents,
-		contact: home + contact,
+		about: about,
+		agents: agents,
+		contact: contact,
 		search: home + '/search',
-		css: home + cssPath,
+		login: home + '/login',
+		signUp: home + '/signUp',
+		css: cssPath,
 		listItems:listItems
 	});
 
 });
 
+
 /* GET about page. */
 router.get('/about', function(req, res, next) {
-
-	res.render('about', { 
-		title: title , 
+	currentHBS = 'about';
+	res.render(currentHBS, { 
+		title: title ,
+		logo: logo, 
 		home:  home, 
 		about: current,
-		agents: home + agents,
-		contact: home + contact,
-		andrewLink: home + about  + '/andrew' , 
-		benediktLink: home + about  +  '/benedikt', 
-		menaLink: home + about  +  '/mena', 
-		noraldLink: home + about  +  '/norald',
-		omerLink: home + about  +  '/omer',
-		saudhLink: home + about  +  '/saudh',
-		abdulLink: home + about  +  '/abdul',
-		praveenLink: home + about  +  '/praveen',
+		agents:  agents,
+		contact:  contact,
+		login: home + '/login',
+		signUp: home + '/signUp',
+		andrewLink: about  + '/andrew' , 
+		benediktLink: about  +  '/benedikt', 
+		menaLink: about  +  '/mena', 
+		noraldLink: about  +  '/norald',
+		omerLink: about  +  '/omer',
+		saudhLink: about  +  '/saudh',
+		abdulLink: about  +  '/abdul',
+		praveenLink: about  +  '/praveen',
+		css: cssPath
 	});
 
 });
 
 /* GET Agents page. */
 router.get('/agents', function(req, res, next) {
+	currentHBS = 'agents';
 
-	res.render('agents', { 
-		title: title , 
+	res.render(currentHBS, { 
+		title: title, 
+		logo: logo , 
 		home: home,
-		about: home + about,
+		about: about,
 		agents: current,
-		contact: home + contact
+		contact: contact,
+		upload: agents + '/upload',
+		login: home + '/login',
+		signUp: home + '/signUp',
+		css: cssPath
 	});
 
 });
@@ -125,12 +199,19 @@ router.get('/agents', function(req, res, next) {
 /* GET Contact page. */
 router.get('/contact', function(req, res, next) {
 
-	res.render('contact', {  
-		title: title , 
+	currentHBS = 'contact';
+	res.render(currentHBS, {  
+		title: title ,
+		logo: logo,
 		home: home,
-		about: home + about,
-		agents: home + agents,
-		contact: current
+		about: about,
+		agents: agents,
+		contact: current,
+		css: cssPath,
+		login: home + '/login',
+		signUp: home + '/signUp',
+		latitude: '37.721900',
+		longitude: '-122.478225'
 	});
 });
 

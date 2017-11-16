@@ -1,6 +1,6 @@
 <!--Navigation Bar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-faded">
-	<a class="navbar-brand" href={{home}}>{{title}}</a>
+	<a class="navbar-brand" href={{home}}><img class="logo" src={{logo}}></a>
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#content" aria-controls="content" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -22,57 +22,61 @@
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
-			<li class="nav-item">
-				<a class="nav-link" href={{signUp}}>Sign Up</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href={{login}}>Login</a>
-			</li>
+			<button type="button" class="btn btn-outline-secondary" id="loginBtn" data-toggle="modal" data-target="#signUp">Sign Up</button>
+			<button type="button" class="btn btn-outline-secondary" id="loginBtn" data-toggle="modal" data-target="#login">Login</button>
 		</ul>
 	</div>
 </nav>
 
 
-<div class="container-fluid" style="text-align: center">
+<div class="container-fluid">
 	<h1>{{title}} Team Page</h1>
 	<h3>Fall 2017</h3>
 	<h3>Section 1</h3>
 	<h3>Team 15</h3>  
 </div>
 
-<div class="container-fluid" style="text-align: center">
-	<div class="row">
-		<div class="col-sm-3">
+<div class="container-fluid">
+	<div class="row about">
+		<div class="col-sm-6">
 			<h3>Mena</h3>
 			<a href={{menaLink}}>More Info</a>
+
 		</div>
-		<div class="col-sm-3">
-			<h3>Andrew</h3>
-			<a href={{andrewLink}}>More Info</a> 
-		</div>
-		<div class="col-sm-3">
-			<h3>Benedikt</h3>
-			<a href={{benediktLink}}>More Info</a>
-		</div>
-		<div class="col-sm-3">
-			<h3>Norald</h3>
-			<a href={{noraldLink}}>More Info</a>
+		<div class="col-sm-6">
+			<h3>Andrew</h3>	
+			<a href={{andrewLink}}>More Info
+			</a> 
 		</div>
 	</div>
-	<div class="row">
-		<div class="col-sm-3">
+	<div class="row about">
+		<div class="col-sm-6">
+			<h3>Benedikt</h3>
+			<a href={{benediktLink}}>More Info
+			</a>
+		</div>
+		<div class="col-sm-6">
+			<h3>Norald</h3>
+			<a href={{noraldLink}}>More Info
+			</a>
+		</div>
+	</div>
+	<div class="row about">
+		<div class="col-sm-6">
 			<h3>Omer Aslam</h3>
 			<a href={{omerLink}}>More Info</a>
 		</div>
-		<div class="col-sm-3">
+		<div class="col-sm-6">
 			<h3>Saudh Khan Lodi</h3>
 			<a href={{saudhLink}}>More Info</a> 
 		</div>
-		<div class="col-sm-3">
+	</div>
+	<div class="row about">
+		<div class="col-sm-6">
 			<h3>Abdul Bari</h3>
 			<a href={{abdulLink}}>More Info</a>
 		</div>
-		<div class="col-sm-3">
+		<div class="col-sm-6">
 			<h3>Guda Praveen Kumar</h3>
 			<a href={{praveenLink}}>More Info</a>
 		</div>

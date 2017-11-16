@@ -1,6 +1,6 @@
 <!--Navigation Bar-->
 <nav class="navbar navbar-expand-lg navbar-light bg-faded">
-	<a class="navbar-brand" href={{home}}>{{title}}</a>
+	<a class="navbar-brand" href={{home}}><img class="logo" src={{logo}}></a>
 	<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#content" aria-controls="content" aria-expanded="false" aria-label="Toggle navigation">
 		<span class="navbar-toggler-icon"></span>
 	</button>
@@ -11,7 +11,7 @@
 				<a class="nav-link" href={{home}}>Home</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link active" href={{about}}>About</a>
+				<a class="nav-link" href={{about}}>About</a>
 			</li>
 			<li class="nav-item">
 				<a class="nav-link" href={{agents}}>Agents</a>
@@ -22,12 +22,8 @@
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
-			<li class="nav-item">
-				<a class="nav-link" href={{signUp}}>Sign Up</a>
-			</li>
-			<li class="nav-item">
-				<a class="nav-link" href={{login}}>Login</a>
-			</li>
+			<button type="button" class="btn btn-outline-secondary" id="loginBtn" data-toggle="modal" data-target="#signUp">Sign Up</button>
+			<button type="button" class="btn btn-outline-secondary" id="loginBtn" data-toggle="modal" data-target="#login">Login</button>
 		</ul>
 	</div>
 </nav>
@@ -39,3 +35,17 @@
 	<h3>Section 1</h3>
 	<h3>Team 15</h3>  
 </div>
+	
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-sm-6">
+ 			<div id="map" data-address="1600 Holloway Ave"></div>
+ 		</div>
+ 		<div class="col-sm-6 Headquarters">
+ 			<h2>{{title}} Headquarters</h2>
+ 			<h4>1600 Holloway Ave</h4>
+ 			<h4>San Francisco, CA 94132</h4>
+ 		</div>
+ 	</div>
+ </div>
+ <script src="/fa17g15/js/map.js"></script>
