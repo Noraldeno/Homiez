@@ -184,6 +184,7 @@ router.get('/agents', function(req, res, next) {
 		about: about,
 		agents: current,
 		contact: contact,
+		upload: agents + '/upload',
 		login: home + '/login',
 		signUp: home + '/signUp',
 		css: cssPath

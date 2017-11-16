@@ -38,6 +38,7 @@ var hbs = require('express-handlebars');
 
 var index = require('./routes/index');
 var about = require('./routes/about');
+var agents = require('./routes/agents');
 
 var router = express.Router(); 
 var app = express();
@@ -59,6 +60,7 @@ app.use(cookieParser());
 
 router.use('/', index);
 router.use('/about', about);
+router.use('/agents', agents);
 
 router.use(express.static(path.join(__dirname, 'public')));
 router.use(express.static(path.join(__dirname, 'db/media')));
@@ -74,6 +76,8 @@ router.use(express.static(path.join(__dirname, 'db/media')));
 
 router.use('/', index);
 router.use('/about', index);
+router.use('/agents', index);
+
 app.use('/fa17g15', router); 
 
 // catch 404 and forward to error handler
